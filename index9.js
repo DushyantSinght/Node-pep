@@ -1,0 +1,22 @@
+import express from 'express';
+const app = express();
+const auth = (req,res,next)=>{
+    const {token} = req.query;
+    if(token === "1234"){
+        next();
+    }
+    else{
+        res.send("Not Authorised");
+    }
+}
+app.get('/:token', (req,res) => {
+    app.use(auth);
+  res.send('Hello World!');
+});
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
+
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
