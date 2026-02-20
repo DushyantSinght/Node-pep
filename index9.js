@@ -1,7 +1,7 @@
 import express from 'express';
 const app = express();
 const auth = (req,res,next)=>{
-    const {token} = req.query;
+    const {token} = req.params;
     if(token === "1234"){
         next();
     }
